@@ -1,0 +1,10 @@
+header ul.nav li a.active {
+    font-weight: bold;
+}
+
+.page-item .page-link.active {
+    z-index: 3;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}

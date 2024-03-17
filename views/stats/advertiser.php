@@ -1,0 +1,62 @@
+<!-- Шаблон страницы -->
+
+<?php ob_start(); ?>
+
+<!-- Содержимое страницы -->
+
+<?php if (isset($_SESSION['user_id'])): ?>
+    <h2>Статистика расходов/пехеходов. Рекламодатель</h2>
+    <br/>
+
+
+    <div class="container">
+        <form id="statsForm">
+            <input type="hidden" name="_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="offerId">Подписанные офферы:</label>
+                    <select class="form-control" id="offerId" name="offerId" >
+                        <!-- Опции для списка офферов будут добавлены сюда -->
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="period">Срез за:</label>
+                    <select class="form-control" id="period" name="period" required>
+                        <option value="day">День</option>
+                        <option value="month">Месяц</option>
+                        <option value="year">Год</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="offerId">&nbsp;</label>
+                    <button type="submit" class="btn btn-primary btn-block">отправить</button>
+                </div>
+            </div>
+        </form>
+        <div class="form-row">
+            <div class="col-md-6">
+                <span id="totalIncome"></span>
+                <br/>
+                <br/>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>Дата</th>
+                <th>Количество кликов</th>
+                <th>Всего потрачено</th>
+            </tr>
+            </thead>
+            <tbody id="statsTableBody">
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+<?php endif; ?>
+
+<?php $title = 'Кабинет рекламодателя'; ?>
+<?php $content = ob_get_clean(); ?>
