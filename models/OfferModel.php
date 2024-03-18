@@ -2,8 +2,7 @@
 namespace Models;
 
 // OfferModel.php
-use Database;
-
+use Config\Database;
 
 class OfferModel
 {
@@ -109,7 +108,7 @@ class OfferModel
     public function subscribeOffer($userId, $offerId)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Проверяем наличие записи с is_active = 0 для указанного пользователя и оффера
@@ -150,7 +149,7 @@ class OfferModel
     public function subscribeCheck($userId, $offerId)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Подготавливаем SQL запрос для проверки подписки
@@ -176,7 +175,7 @@ class OfferModel
     public function updateOffer($offerId, $advertiserId, $offerName, $costPerClick, $urlId, $isActive, $theme)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Проверяем, принадлежит ли оффер указанному рекламодателю
@@ -215,7 +214,7 @@ class OfferModel
     public function unsubscribeOffer($userId, $offerId)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Подготавливаем SQL запрос для обновления статуса подписки
@@ -240,7 +239,7 @@ class OfferModel
     public function getAll()
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         $sql = "SELECT o.*, u.username, tu.url
@@ -269,7 +268,7 @@ class OfferModel
     public function getOffer($id, $advertiserId = null)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
 // Создаем SQL запрос для получения данных оффера и его URL
@@ -308,7 +307,7 @@ class OfferModel
     public function getOffersWithPagination($perPage, $offset, $advertiserId = null)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
 // Создаем SQL запрос для выборки офферов с количеством подписок на каждый оффер
@@ -353,7 +352,7 @@ class OfferModel
     public function getOffersWithPaginationWebmasterSubscribed($perPage, $offset, $webmasterId)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Создаем SQL запрос для выборки офферов, на которые веб-мастер подписан
@@ -385,7 +384,7 @@ class OfferModel
     public function getOffersWithPaginationWebmaster($perPage, $offset, $webmasterId)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Создаем SQL запрос для выборки активных офферов, на которые веб-мастер еще не подписан
@@ -417,7 +416,7 @@ class OfferModel
     public function countOffersWebmasterSubscribed($webmasterId)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Создаем SQL запрос для подсчета количества офферов, на которые веб-мастер подписан
@@ -448,7 +447,7 @@ class OfferModel
     public function countOffersWebmaster($webmasterId)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Создаем SQL запрос для подсчета количества офферов, на которые веб-мастер еще не подписан
@@ -478,7 +477,7 @@ class OfferModel
     public function countOffers($advertiserId = null)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Создаем SQL запрос для подсчета количества офферов
@@ -511,7 +510,7 @@ class OfferModel
     public function countOffersActive($advertiserId = null)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Создаем SQL запрос для подсчета количества офферов
@@ -569,7 +568,7 @@ class OfferModel
     public function getOffersWebmaster($webmasterId)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
 // Создаем SQL запрос для выборки идентификаторов и названий офферов, на которые веб-мастер подписан
@@ -598,7 +597,7 @@ class OfferModel
     public function getOffersAdvertiser($advertiserId = null)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Создаем SQL запрос с соединением двух таблиц
@@ -685,5 +684,4 @@ class OfferModel
     }
 
 }
-
-?>
+ 

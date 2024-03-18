@@ -2,9 +2,8 @@
 namespace Models;
 
 // UsersModel.php
-use Database;
+use Config\Database;
 use Interfaces\UserModelInterface;
-
 
 class UsersModel implements UserModelInterface
 {
@@ -34,7 +33,7 @@ class UsersModel implements UserModelInterface
     public function getUsersWithPagination()
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Создаем SQL запрос для выборки пользователей с их ролями с учетом пагинации
@@ -66,7 +65,7 @@ class UsersModel implements UserModelInterface
     public function countUsers()
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Создаем SQL запрос для подсчета количества офферов
@@ -88,7 +87,7 @@ class UsersModel implements UserModelInterface
     public function updateUser()
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Подготавливаем SQL запрос для обновления информации о пользователе
@@ -133,7 +132,7 @@ class UsersModel implements UserModelInterface
     public function getOffersWithPaginationWebmaster($perPage, $offset, $webmasterId)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Создаем SQL запрос для выборки активных офферов, на которые веб-мастер еще не подписан
@@ -253,5 +252,4 @@ class UsersModel implements UserModelInterface
         $this->password = password_hash((string)$password, PASSWORD_DEFAULT); // Хеширование пароля;
     }
 }
-
-?>
+ 

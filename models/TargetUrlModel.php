@@ -1,14 +1,14 @@
 <?php
 namespace Models;
 // TargetUrlModel.php
-use Database;
+use Config\Database;
 
 class TargetUrlModel {
 
     public function addUrl($targetUrl)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         try {
@@ -36,7 +36,7 @@ class TargetUrlModel {
 
     public function getUrlId($url) {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         try {
@@ -60,5 +60,4 @@ class TargetUrlModel {
             return null;
         }
     }
-}
-?>
+} 

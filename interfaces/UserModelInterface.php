@@ -19,5 +19,4 @@ interface UserModelInterface
     public function setEmail($email);
     public function setPassword($password);
 }
-
-?>
+ 

@@ -2,6 +2,8 @@
 // AuthModel.php
 namespace Models;
 
+use Config\Database;
+
 class AuthModel
 {
     private $response = [
@@ -11,7 +13,7 @@ class AuthModel
 
     public function registerUser($username, $role_id, $email, $password)
     {
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Подготовленный запрос для вставки нового пользователя
@@ -53,7 +55,7 @@ class AuthModel
     public function authenticateUser($username, $password)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Подготовленный запрос для выборки данных пользователя по имени пользователя
@@ -122,7 +124,7 @@ class AuthModel
             return false;
         }
 
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         $stmt = $pdo->prepare("
@@ -141,6 +143,4 @@ class AuthModel
             return true;
         }
     }
-}
-
-?>
+} 

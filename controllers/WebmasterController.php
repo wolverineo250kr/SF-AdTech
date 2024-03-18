@@ -33,7 +33,6 @@ class WebmasterController extends MainController
         }
 
         $userId = $this->authModel->getRoleId();
-
         if ($userId === 1) {
             header("Location: /login");
             exit();
@@ -195,7 +194,7 @@ class WebmasterController extends MainController
         $offers = $offerModel->getOffersWithPaginationWebmasterSubscribed($perPage, $offset, $userId);
 
         foreach ($offers as $index => $value) {
-            $offers[$index]['url'] = UrlHelper::host() . "://" . UrlHelper::base() . "/redirect?id=" . UrlHelper::encryptData($value["offer_relation"] . '--' . $userId);
+            $offers[$index]['url'] = UrlHelper::host() . "://" . UrlHelper::subdomain() . UrlHelper::base() . "/redirect?id=" . UrlHelper::encryptData($value["offer_relation"] . '--' . $userId);
         }
 
         $response['data'] = $offers;
@@ -206,5 +205,4 @@ class WebmasterController extends MainController
         $this->respondWithJson($response);
     }
 }
-
-?>
+ 

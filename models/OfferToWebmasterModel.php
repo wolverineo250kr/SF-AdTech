@@ -2,7 +2,7 @@
 namespace Models;
 
 // OfferToWebmasterModel.php
-use Database;
+use Config\Database;
 
 class OfferToWebmasterModel
 {
@@ -12,7 +12,7 @@ class OfferToWebmasterModel
     public function getData()
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Подготавливаем SQL запрос для получения URL
@@ -53,5 +53,4 @@ class OfferToWebmasterModel
         $this->webmasterId = (int)$webmasterId;
     }
 }
-
-?>
+ 

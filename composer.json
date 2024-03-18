@@ -3,6 +3,15 @@
     "vlucas/phpdotenv": "*",
     "twbs/bootstrap": "4.6",
     "defuse/php-encryption": "*"
-
+  },
+  "autoload": {
+    "psr-4": {
+      "Controllers\\": "controllers/",
+      "Helpers\\": "helpers/",
+      "Interfaces\\": "interfaces/",
+      "Models\\": "models/",
+      "Config\\": "config/",
+      "Assets\\": "assets/"
+    }
   }
 }

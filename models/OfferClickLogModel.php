@@ -2,7 +2,7 @@
 namespace Models;
 
 // OfferClickLogModel.php
-use Database;
+use Config\Database;
 use Models\OfferModel;
 
 class OfferClickLogModel
@@ -26,7 +26,7 @@ class OfferClickLogModel
     public function writeLog()
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Подготавливаем SQL-запрос для вставки записи
@@ -121,7 +121,7 @@ class OfferClickLogModel
     public function getAll()
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         $sql = "SELECT rl.*, u.username, tu.url, ofr.name AS advertiser_name, ofr.theme AS advertiser_theme
@@ -151,7 +151,7 @@ LIMIT :perPage OFFSET :offset
     public function countAll()
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Создаем SQL запрос для подсчета количества офферов
@@ -173,7 +173,7 @@ LIMIT :perPage OFFSET :offset
     public function countAllRedirected()
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Создаем SQL запрос для подсчета количества записей с redirected = 1
@@ -267,5 +267,4 @@ LIMIT :perPage OFFSET :offset
         return $this->offerIds;
     }
 }
-
-?>
+ 

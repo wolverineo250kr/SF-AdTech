@@ -2,12 +2,10 @@
 // index.php
 
 // Подключаем автозагрузчик Composer
-require_once __DIR__ . '/../vendor/autoload.php';
-
+require_once __DIR__ . '/../vendor/autoload.php'; 
 // Подключаем файлы с настройками и классами проекта
 require_once __DIR__ . '/../config/routes.php';
-require_once __DIR__ . '/../config/autoload_classes.php';
-require_once __DIR__ . '/../config/database.php';
+//require_once __DIR__ . '/../config/database.php';
 
 // Копируем bootstrap.min.css, если он отсутствует
 $bootstrapSource = __DIR__ . '/../vendor/twbs/bootstrap/dist/css/bootstrap.min.css';
@@ -42,7 +40,10 @@ if (array_key_exists($request_url, $routes)) {
     $methodName = $route[1];
 
     $authModel = new \Models\AuthModel();
-    require_once __DIR__ . '/../' . $controllerPath . '.php';
+
+    $controllerPathE = str_replace('/web/../', '/', __DIR__ . '/../' . str_replace('\\', '/', $controllerPath) . '.php');
+    require_once $controllerPathE;
+ 
     $controller = new $controllerPath($authModel);
     $controller->$methodName();
 } else {
@@ -50,4 +51,3 @@ if (array_key_exists($request_url, $routes)) {
     http_response_code(404);
     echo 'Страница не найдена';
 }
-?>

@@ -42,6 +42,21 @@ class UrlHelper
         return implode('.', [$name, $zone]);
     }
 
+    static public function subdomain(): string
+    {
+        $hostParts = explode('.', $_SERVER['HTTP_HOST']);
+        $domainPartsCount = count($hostParts);
+
+        // Если в домене есть поддомен, то вернем его с точкой
+        if ($domainPartsCount > 2) {
+            $subdomain = implode('.', array_slice($hostParts, 0, $domainPartsCount - 2));
+            return $subdomain . '.';
+        } else {
+            // Иначе вернем пустую строку
+            return '';
+        }
+    }
+
     static public function host(): string
     {
         return (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';

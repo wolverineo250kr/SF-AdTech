@@ -49,5 +49,4 @@ class MainController
         return strtolower($controllerShortName);
     }
 }
-
-?>
+ 

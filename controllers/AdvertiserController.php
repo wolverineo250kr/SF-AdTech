@@ -136,7 +136,7 @@ class AdvertiserController extends MainController
     public function getOffersWithPagination($perPage, $offset, $advertiserId = null)
     {
         // Создаем экземпляр подключения к базе данных
-        $database = new \Database();
+        $database = new Database();
         $pdo = $database->getConnection();
 
         // Создаем начало SQL запроса
@@ -334,5 +334,4 @@ class AdvertiserController extends MainController
     }
 
 }
-
-?>
+ 
